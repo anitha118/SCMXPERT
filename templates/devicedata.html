@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Device Data Stream</title>
+    <link rel="stylesheet" href="/statics/devicedata.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <header class="sidebar-header">
+            <div class="header-logo">
+                <img src="/statics/images/logo.jpg" alt="Logo" class="logo-icon">
+                <p>Exafluence</p>
+            </div>
+            <button class="sidebar-toggler">
+                <span class="material-symbols-rounded">chevron_left</span>
+            </button>
+        </header>
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="/dashboard" class="nav-link"><span class="material-symbols-rounded">dashboard</span><span class="nav-label">Dashboard</span></a></li>
+                <li class="nav-item"><a href="/new_shipment" class="nav-link"><span class="material-symbols-rounded">local_shipping</span><span class="nav-label">New Shipment</span></a></li>
+                <li class="nav-item"><a href="/myshipment" class="nav-link"><span class="material-symbols-rounded">delivery_truck_speed</span><span class="nav-label">Shipment</span></a></li>
+                <li class="nav-item"><a href="/devicedata" class="nav-link"><span class="material-symbols-rounded">dataset</span><span class="nav-label">Device Data</span></a></li>
+                <li class="nav-item">
+                    <a href="/logout" id="logoutBtn" class="signout-btn nav-link"> 
+                        <span class="material-symbols-rounded">logout</span>
+                        <span class="nav-label">LogOut</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <div class="container">
+        <form method="get" action="/device">
+            <div class="form-container">
+                <h3>Device Data Stream</h3>
+                <div class="get-details">
+                    <h4>Please Select a Device ID to See the Data Stream</h4>
+                    <p>Device ID</p>
+                    <select id="device-id" name="device_id" class="device-id" onchange="this.form.submit()">
+                        <option value="">Select</option>
+                        <option value="1156053076" {% if selected_device_id == "1156053076" %}selected{% endif %}>1156053076</option>
+                        <option value="1156053077" {% if selected_device_id == "1156053077" %}selected{% endif %}>1156053077</option>
+                    </select>                    
+                </div>
+                <br>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Device ID</th>
+                                <th>Battery Level</th>
+                                <th>First Sensor Temperature</th>
+                                <th>Route From</th>
+                                <th>Route To</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if devices %}
+                                {% for device in devices %}
+                                    <tr>
+                                        <td>{{ device.Device_Id }}</td>
+                                        <td>{{ device.Battery_Level }}</td>
+                                        <td>{{ device.First_Sensor_temperature }}</td>
+                                        <td>{{ device.Route_From }}</td>
+                                        <td>{{ device.Route_To }}</td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr><td colspan="5">No device data found.</td></tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+<script src="/statics/script/devicedata.js"></script>
+</body>
+</html>

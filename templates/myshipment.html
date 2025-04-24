@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <title>My Shipment</title>
+        <link rel="stylesheet" href="/statics/myshipment.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    </head>
+    <body>
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <div class="header-logo">
+                    <img src="/statics/images/logo.jpg" alt="Logo" class="logo-icon">
+                    <p>Exafluence</p>
+                </div>
+                <button class="sidebar-toggler">
+                    <span class="material-symbols-rounded">chevron_left</span>
+                </button>
+            </header>
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="/dashboard" class="nav-link">
+                            <span class="material-symbols-rounded">dashboard</span>
+                            <span class="nav-label">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/new_shipment" class="nav-link">
+                            <span class="material-symbols-rounded">local_shipping</span>
+                            <span class="nav-label">New Shipment</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/myshipment" class="nav-link">
+                            <span class="material-symbols-rounded">delivery_truck_speed</span>
+                            <span class="nav-label">Shipment</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/devicedata" class="nav-link">
+                            <span class="material-symbols-rounded">dataset</span>
+                            <span class="nav-label">Device Data</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/logout" id="logoutBtn" class="signout-btn nav-link"> 
+                            <span class="material-symbols-rounded">logout</span>
+                            <span class="nav-label">LogOut</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+    
+        <div class="container">
+            <h3>My Shipments</h3><br>
+            <table>
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Shipment Number</th>
+                        <th>Route Details</th>
+                        <th>Device</th>
+                        <th>PO Number</th>
+                        <th>NDC Number</th>
+                        <th>Serial Number</th>
+                        <th>Container Number</th>
+                        <th>Goods Type</th>
+                        <th>Delivery Number</th>
+                        <th>Expected Delivery Date</th>
+                        <th>Batch ID</th>
+                        <th>Shipment Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for shipment in shipments %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ shipment.shipment_number }}</td>
+                        <td>{{ shipment.route_details }}</td>
+                        <td>{{ shipment.device }}</td>
+                        <td>{{ shipment.po_number }}</td>
+                        <td>{{ shipment.ndc_number }}</td>
+                        <td>{{ shipment.serial_number }}</td>
+                        <td>{{ shipment.container_number }}</td>
+                        <td>{{ shipment.goods_type }}</td>
+                        <td>{{ shipment.delivery_number }}</td>
+                        <td>{{ shipment.expected_date }}</td>
+                        <td>{{ shipment.batch_id }}</td>
+                        <td>{{ shipment.description }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </body>
+<script src="/statics/script/myshipment.js"></script>
+</html>

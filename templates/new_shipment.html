@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Shipment</title>
+    <link rel="stylesheet" href="/statics/new_shipment.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <header class="sidebar-header">
+            <div class="header-logo">
+                <img src="/statics/images/logo.jpg" alt="Logo" class="logo-icon">
+                <p>Exafluence</p>
+            </div>
+            <button class="sidebar-toggler">
+                <span class="material-symbols-rounded">chevron_left</span>
+            </button>
+        </header>
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="/dashboard" class="nav-link">
+                        <span class="material-symbols-rounded">dashboard</span>
+                        <span class="nav-label">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/new_shipment" class="nav-link">
+                        <span class="material-symbols-rounded">local_shipping</span>
+                        <span class="nav-label">New Shipment</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/myshipment" class="nav-link">
+                        <span class="material-symbols-rounded">delivery_truck_speed</span>
+                        <span class="nav-label">Shipment</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/devicedata" class="nav-link">
+                        <span class="material-symbols-rounded">dataset</span>
+                        <span class="nav-label">Device Data</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/logout" id="logoutBtn" class="signout-btn nav-link"> 
+                        <span class="material-symbols-rounded">logout</span>
+                        <span class="nav-label">LogOut</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h2>Create New Shipment</h2> 
+
+        <!-- Shipment Form -->
+        <form id="shipment-form" method="post" action="/new_shipment" enctype="multipart/form-data" class="form-container">
+            <div class="form-group">
+                <label>Shipment Number <span class="red-asterisk">*</span></label>
+                <input type="text" id="shipment-number" name="shipment_number" required>
+            </div>
+            <div class="form-group">
+                <label>Route Details <span class="red-asterisk">*</span></label>
+                <select id="route-details" name="route_details" required>
+                    <option value="">Select Route</option>
+                    <option value="Hyderabad to Tirupati">Hyderabad to Tirupati</option>
+                    <option value="Delhi to Mumbai">Delhi to Mumbai</option>
+                    <option value="Chennai to Bangalore">Chennai to Bangalore</option>
+                    <option value="Kolkata to Patna">Kolkata to Patna</option>
+                    <option value="Ahmedabad to Jaipur">Ahmedabad to Jaipur</option>
+                    <option value="Pune to Nagpur">Pune to Nagpur</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Device <span class="red-asterisk">*</span></label>
+                <select id="device" name="device" required>
+                    <option value="">Select Device</option>
+                    <option value="1156053076">1156053076</option>
+                    <option value="1156053077">1156053077</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>PO Number <span class="red-asterisk">*</span></label>
+                <input type="text" id="po-number" name="po_number" required>
+            </div>
+            <div class="form-group">
+                <label>NDC Number <span class="red-asterisk">*</span></label>
+                <input type="text" id="ndc-number" name="ndc_number" required>
+            </div>
+            <div class="form-group">
+                <label>Serial Number <span class="red-asterisk">*</span></label>
+                <input type="text" id="serial-number" name="serial_number" required>
+            </div>
+            <div class="form-group">
+                <label>Container Number <span class="red-asterisk">*</span></label>
+                <input type="text" id="container-number" name="container_number" required>
+            </div>
+            <div class="form-group">
+                <label>Goods Type <span class="red-asterisk">*</span></label>
+                <select id="goods-type" name="goods_type" required>
+                    <option value="">Select Type</option>
+                    <option value="Mobile">Mobile</option>
+                    <option value="Eletronics">Eletronics</option>
+                    <option value="Laptops">Laptops</option>
+                    <option value="Computers">Computers</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Expected Delivery Date <span class="red-asterisk">*</span></label>
+                <input type="date" id="delivery-date" name="expected_date" required>
+            </div>
+            <div class="form-group">
+                <label>Delivery Number <span class="red-asterisk">*</span></label>
+                <input type="text" id="delivery-number" name="delivery_number" required>
+            </div>
+            <div class="form-group">
+                <label>Batch ID <span class="red-asterisk">*</span></label>
+                <input type="text" id="batch-id" name="batch_id" required>
+            </div>
+            <div class="form-group">
+                <label>Shipment Description <span class="red-asterisk">*</span></label>
+                <textarea id="shipment-description" name="description" required></textarea>
+            </div>
+            <div class="button-group">
+                <button type="submit">Create Shipment</button>
+            </div>   
+        </form>
+        
+    </div>
+</body>
+<script src="/statics/script/new_shipment.js"></script>
+</html>

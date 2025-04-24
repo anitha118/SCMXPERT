@@ -1,0 +1,247 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-image: url('/statics/images/shipment.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: #2c3e50;
+    color: white;
+    position: fixed;
+    height: 100%;
+    transition: width 0.3s ease-in-out;
+    padding-top: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.collapsed {
+    width: 80px;
+}
+
+.sidebar.collapsed .nav-label,
+.sidebar.collapsed .sidebar-header p {
+    display: none;
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    transition: width 0.3s, opacity 0.3s;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: #1f2c38;
+}
+
+.logo-icon {
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.sidebar-header p {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Sidebar Navigation */
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    width: 100%;
+    padding: 10px;
+    transition: background 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: #1abc9c;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.nav-link span {
+    margin-right: 10px;
+}
+
+/* Dropdown */
+.dropdown-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+    position: absolute;
+    background: #34495e;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    top: 100%;
+    left: 0;
+}
+
+.nav-item:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu .nav-item {
+    padding: 10px 15px;
+}
+
+.dropdown-menu .nav-link {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    font-size: 14px;
+    transition: background 0.3s ease-in-out;
+}
+
+.dropdown-menu .nav-link:hover {
+    background: #2c3e50;
+    border-radius: 5px;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 260px;
+    transition: margin-left 0.3s;
+    padding: 20px;
+}
+
+.sidebar.collapsed + .main-content {
+    margin-left: 90px;
+}
+
+/* Header */
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 15px;
+    text-align: center;
+    color: black;
+    border-bottom: 2px solid #bdc3c7;
+}
+
+/* Button - Global Utility */
+button {
+    background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    box-shadow: 0 6px 15px rgba(55, 131, 207, 0.3);
+}
+
+button:hover {
+    background: linear-gradient(45deg, #00c6ff, #0072ff, #6a00f4);
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 75, 43, 0.5);
+}
+
+button:active {
+    transform: scale(0.95);
+    box-shadow: 0 4px 10px rgba(255, 75, 43, 0.3);
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+/* Content Wrapper */
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Form Styling */
+.form-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 1000px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.red-asterisk {
+    color: red;
+    font-weight: bold;
+    margin-left: 4px;
+  }
+  
+input,
+select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.button-group {
+    grid-column: span 2;
+    text-align: center;
+    margin-top: 20px;
+}
+.signout-btn nav-link {
+    background: none;
+    padding: 5px 5px;
+    transform: scale(0.95);
+}

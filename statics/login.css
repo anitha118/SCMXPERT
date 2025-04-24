@@ -1,0 +1,261 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url(images/login.webp) center/cover;
+    margin: 0;
+}
+
+/* Centering Container */
+.container {
+    display: flex;
+    width: 60%;
+    height: 70vh;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.2);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Left Side - Welcome Section */
+.welcome-section {
+    width: 50%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    background: url(images/th.jpg) no-repeat center/cover;
+}
+
+.welcome-section h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Right Side - Login Form */
+.form-section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    backdrop-filter: blur(20px);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.form-section h2 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+/* Input Fields with Icons */
+.input-container {
+    position: relative;
+    margin: 15px 0;
+    width: 100%;
+}
+
+.input-container i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-container input:focus {
+    border-color: #4A90E2;
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.5);
+}
+
+/* Captcha Container */
+.captcha {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.captcha .preview {
+    color: #fff;
+    width: 80%;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    letter-spacing: 4px;
+    border: 2px dashed #4A90E2;
+    font-family: "monospace";
+    font-size: 18px;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    user-select: none;
+}
+
+.captcha .captcha-form {
+    display: flex;
+    width: 80%;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.captcha .captcha-form input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #4A90E2;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+}
+
+.captcha .captcha-form input:focus {
+    border-color: #1E3799;
+    box-shadow: 0 0 8px rgba(30, 55, 153, 0.5);
+}
+
+.captcha .captcha-form .captcha-refresh {
+    width: 50px;
+    height: 44px;
+    border: none;
+    outline: none;
+    background: #4A90E2;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.captcha .captcha-form .captcha-refresh:hover {
+    background: #1E3799;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .captcha .preview {
+        font-size: 16px;
+        width: 90%;
+    }
+
+    .captcha .captcha-form {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .captcha .captcha-form input {
+        width: 100%;
+    }
+
+    .captcha .captcha-form .captcha-refresh {
+        width: 100%;
+        height: 44px;
+    }
+}
+
+/* Buttons */
+button {
+    width: 100px;
+    padding: 12px;
+    border: none;
+    background: linear-gradient(45deg, #00c6ff, #0072ff, #6a00f4);
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+/* Click Effect */
+button:active {
+    transform: scale(0.95);
+    box-shadow: 0 4px 10px rgba(62, 175, 204, 0.3);
+}
+/* Sign Up Link */
+p {
+    margin-top: 20px;
+}
+
+p a {
+    color: #4A90E2;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+p a:hover {
+    text-decoration: underline;
+    color: #1E3799;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 90%;
+        height: auto;
+    }
+
+    .welcome-section {
+        width: 100%;
+        padding: 30px;
+    }
+
+    .form-section {
+        width: 100%;
+        padding: 30px;
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .input-container {
+        width: 100%;
+    }
+
+    .captcha .captcha-form {
+        flex-direction: column;
+    }
+
+    .captcha .captcha-form input {
+        width: 100%;
+    }
+
+    .captcha .captcha-form .captcha-refresh {
+        width: 100%;
+    }
+}

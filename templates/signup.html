@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../statics/signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Side: Signup Form -->
+        <div class="form-section">
+            <div id="errorResponse" style="display: none;">{{error}}</div>
+            <div class="popupsuccess" id="successPopup"></div>
+            <div class="popuperror" id="errorPopup"></div>
+            <form method="post" action="/signup" onsubmit="return validateSignup(event)">
+                <h2>Sign Up</h2>
+                <div class="input-container">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="username" id="username" placeholder="Username" required>
+                </div>
+                <div class="input-container">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="input-container">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" id="password" placeholder="Password" required autocomplete="new-password">
+                </div>
+                <div class="input-container">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="confirm_password" id="confirm-password" placeholder="Confirm Password" required autocomplete="new-password">
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+
+        <!-- Right Side: Welcome Section -->
+        <div class="welcome-section">
+            <h1>Welcome Back!</h1>
+            <p>Please login with your personal info.</p>
+            <a href="/login"><button>Login</button></a>
+        </div>
+    </div>
+    <script src="../statics/script/signup.js"></script>
+</body>
+</html>

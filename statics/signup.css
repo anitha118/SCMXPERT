@@ -1,0 +1,149 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('/statics/images/s.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; /* or use 'contain' if you want the whole image to fit */
+}
+.popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    z-index: 1000;
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transform: translateY(-20px);
+}
+
+.popup.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.popupsuccess{
+    background-color: rgba(40, 167, 69, 0.95);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.popuperror {
+    background-color: rgba(220, 53, 69, 0.95);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Container - Split Layout */
+.container {
+    display: flex;
+    width: 60%;
+    height: 70vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+}
+
+/* Left Side - Welcome Section */
+.welcome-section {
+    width: 50%;
+    background: url('/statics/images/pbi.webp') no-repeat center center;
+    background-size: cover;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    backdrop-filter: blur(20px);
+}
+
+
+.welcome-section h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.welcome-section button {
+    background: linear-gradient(45deg, #00c6ff, #0072ff, #6a00f4);
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+/* Right Side - Forms Section */
+.form-section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    position: relative;
+}
+
+/* Form Styles */
+form {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+/* Input Fields with Icons */
+.input-container {
+    position: relative;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.input-container i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 12px 12px 12px 35px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Buttons */
+button {
+    width: 100px;
+    padding: 12px;
+    border: none;
+    background: linear-gradient(45deg, #00c6ff, #0072ff, #6a00f4);
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+
+
+  

@@ -1,0 +1,59 @@
+  services:
+    # main application service
+    SCMXPERTLITE:
+      image: anitha113/scmxpertlite:latest
+      ports:
+        - "8000:8000"
+
+    # Zookeeper for Kafka(Manages Kafka brokers)
+    zookeeper:
+      image: 'ubuntu/zookeeper:latest'  # Use Ubuntu Zookeeper image
+      ports:
+        - "2181:2181"
+      depends_on:
+        - SCMXPERTLITE
+      environment:
+        - ALLOW_ANONYMOUS_LOGIN=yes
+
+    # Kafka service(Message broker)
+    kafka:
+      image: 'ubuntu/kafka:latest'  # Use Ubuntu Kafka image
+      ports:
+        - "9092:9092"
+      depends_on:
+        - zookeeper
+      environment:
+        - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+        - ALLOW_PLAINTEXT_LISTENER=yes
+        - KAFKA_HEAP_OPTS=-Xmx1G  
+  
+    # Server service(TCP server that accepts data)
+    servers: 
+      image: anitha113/server:latest
+      ports:
+        - "12345:12345"
+      depends_on:
+        - kafka
+    # Producer service(Sends data to Kafka)
+    producer:
+      image: anitha113/producer:latest
+      depends_on:
+        - servers
+      environment:
+        - port=12345
+        - host=servers
+        - bootstrap_servers=kafka:9092
+        - topic=device_data
+      
+    # Consumer service(Reads data from Kafka and stores in MongoDB)
+    consumer:
+      image: anitha113/consumer:latest
+      depends_on:
+        - producer
+      environment:
+        - bootstrap_servers=kafka:9092
+        - topic=device_data
+        - MONGODB_URL=mongodb+srv://anitha:Ch%40ni18eddy@cluster0.b86pq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+        - group_id=scm-consumer
+        - data_base_name=SCMXpertLite
+        - collection=device_data
