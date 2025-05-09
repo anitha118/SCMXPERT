@@ -143,6 +143,73 @@ button {
     margin-top: 10px;
     transition: background 0.3s;
 }
+/* Responsive Design */
+
+/* For Tablets (768px to 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        width: 80%;
+        height: auto;
+        flex-direction: column-reverse;
+    }
+
+    .form-section, .welcome-section {
+        width: 100%;
+        height: auto;
+    }
+
+    .welcome-section {
+        padding: 40px 20px;
+    }
+
+    .form-section {
+        padding: 30px 20px;
+    }
+}
+
+/* For Mobile Devices (up to 767px) */
+@media (max-width: 767px) {
+    body {
+        padding: 20px;
+        height: auto;
+    }
+
+    .container {
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        backdrop-filter: none;
+        flex-direction: column-reverse;
+    }
+
+    .form-section, .welcome-section {
+        width: 100%;
+        height: auto;
+        padding: 20px 10px;
+    }
+
+    .welcome-section h1 {
+        font-size: 2em;
+    }
+
+    .welcome-section p {
+        font-size: 1em;
+    }
+
+    form {
+        max-width: 100%;
+    }
+
+    .input-container input {
+        padding: 10px 10px 10px 30px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+    }
+}
 
 
 

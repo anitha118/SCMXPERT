@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const sidebar = document.querySelector(".sidebar");
     const mainContent = document.querySelector(".unauthorized-container");
     const navLabels = document.querySelectorAll(".nav-label");
-    const navLinks = document.querySelectorAll(".nav-link");
 
     // Function to toggle sidebar
     function toggleSidebar() {

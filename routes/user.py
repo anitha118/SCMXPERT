@@ -1,11 +1,11 @@
 from fastapi import APIRouter, HTTPException, Request, Form, Depends,status
 from fastapi.templating import Jinja2Templates
-from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse, Response #import tools for form handling, HTML rendering, static files, authentication, and user data storage
+from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse, Response 
 from fastapi.staticfiles import StaticFiles
 from api.database import users_collection 
-from api.auth import hash_password, verify_password, create_jwt_token #Encrypts user passwords,Checks if the password matches,Creates JWT tokens after login.
+from api.auth import hash_password, verify_password, create_jwt_token 
 
-user_router = APIRouter() #groups all user-related routess
+user_router = APIRouter() 
 user_router.mount("/statics", StaticFiles(directory="statics"), name="static")
 
 templates = Jinja2Templates(directory="templates")
@@ -21,7 +21,6 @@ async def get_login(request: Request):
 # Signup Page
 @user_router.get("/signup")
 def show_signup_page(request: Request):
-    print("this is signup")
     return templates.TemplateResponse("signup.html", {"request": request})
 
 # Signup Logic
@@ -33,7 +32,6 @@ async def signup(
     password: str = Form(),
     confirm_password: str = Form(),
 ):
-    print("username:", username)
 
     # Validate passwords match
     if password != confirm_password:
@@ -56,28 +54,26 @@ async def signup(
     "username": username,
     "email": email,
     "password": hashed_password,
-    "role": "user"  # <--- Add this line
+    "role": "user"  
     }
 
     users_collection.insert_one(user_data)
     
-    return templates.TemplateResponse("signup.html", {"request": request})
-
+    return templates.TemplateResponse("signup.html", {"request": request, "success": "Signup successful"})
 
 # Login Page
-
 @user_router.post("/login")
 def login(request: Request, email: str = Form(), password: str = Form()):
     user = users_collection.find_one({"email": email}, {"_id": 0})
-    print("User Found:", user)  # Debugging
+    print("User Found:", user) 
 
     try:
         if user and verify_password(password, user["password"]):
            token = create_jwt_token(
-               data={"sub": user["email"]},  # 👈 Make sure you're using "sub"
+               data={"sub": user["email"]},  
                role=user["role"]
                )
-           print("Generated Token:", token) # Debugging
+           print("Generated Token:", token) 
            
            response = RedirectResponse(url="/dashboard", status_code=303)
            response.set_cookie(
@@ -86,18 +82,21 @@ def login(request: Request, email: str = Form(), password: str = Form()):
                 httponly=True,
                 samesite="Lax",
                 max_age=3600,
-                secure=False,  # Change to False for local testing
+                secure=False,  
             )
            return response
+        
+        return templates.TemplateResponse(
+            "login.html",
+            {"request": request, "error": "Invalid credentials"},
+        )
 
     except Exception as e:
         return JSONResponse(content={"error": str(e)}, status_code=500)
-
-    return JSONResponse(content={"error": "Invalid credentials"}, status_code=401)
 
 
 @user_router.get("/logout")
 def logout():
     response = RedirectResponse(url="/login", status_code=302)
-    response.delete_cookie("access_token", path="/")  # Make sure path matches how the cookie was set
+    response.delete_cookie("access_token", path="/") 
     return response

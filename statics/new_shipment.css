@@ -245,3 +245,108 @@ select {
     padding: 5px 5px;
     transform: scale(0.95);
 }
+/* ========== Responsive Design ========== */
+
+/* For tablets (width between 768px and 1024px) */
+@media (max-width: 1024px) and (min-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 90%;
+        height: auto;
+    }
+    .sidebar {
+        width: 200px;
+    }
+    .main-content {
+        margin-left: 210px;
+    }
+    .form-container {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+}
+
+/* For mobile devices (width less than 768px) */
+@media (max-width: 767px) {
+    body {
+        flex-direction: column;
+        overflow: auto;
+        background-size: cover;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px 0;
+    }
+
+    .sidebar.collapsed {
+        width: 100%;
+    }
+
+    .sidebar-header {
+        display: none;
+    }
+
+    .nav-list {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .nav-item {
+        padding: 5px;
+    }
+
+    .nav-link {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    .form-container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+        width: 90%;
+    }
+
+    .button-container {
+        height: auto;
+        padding: 20px 0;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+/* Extra small devices (width less than 480px) */
+@media (max-width: 480px) {
+    h2 {
+        font-size: 20px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    input, select {
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    .form-container {
+        padding: 10px;
+    }
+}

@@ -1,38 +1,51 @@
 import socket
+import sys
+import errno
 import json
-from random import randint
 import time
+import random
+
+PORT = 12345
+SERVER = socket.gethostbyname(socket.gethostname())
+print(SERVER)
+ADDR = (SERVER, PORT)
+FORMAT = 'utf-8'
+DISCONNECT_MESSAGE = "!DISCONNECT"
 
 
-s = socket.socket()
-print("Socket Created")
-s.bind(('',12345))
-s.listen(3)
-print("waiting for connections")
-c, addr = s.accept()
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+print("socket created")
 
+server.bind(('',12345))   # bind this socket to the address we configured earlier
+server.listen(2)
+print(f"[LISTENING] Server is listening on {SERVER}")
+conn, addr = server.accept()
+print(f'CONNECTION FROM {addr} HAS BEEN ESTABLISHED')
+connected = True
+while connected:
+        try:
+            for i in range(0,5):
+                route = ['Newyork,USA','Chennai, India','Bengaluru, India','London,UK']
+                routefrom = random.choice(route)
+                routeto = random.choice(route)
+                if (routefrom!=routeto):
+                    data = {
+                        "Battery_Level":round(random.uniform(2.00,5.00),2),
+                        "Device_ID": random.randint(1150,1158),
+                        "First_Sensor_temperature":round(random.uniform(10,40.0),1),
+                        "Route_From":routefrom,
+                        "Route_To":routeto
+                        }
+                    userdata = (json.dumps(data, indent=1)).encode(FORMAT)
+                    conn.send(userdata)
+                    print(userdata)
+                    time.sleep(10)
+                else:
+                    continue
 
-data =[{
-"Battery_Level":3.52,
- "Device_Id":1156053076,
- "First_Sensor_temperature":19.4 ,
- "Route_From":"Hyderabad, India",
- "Route_To":"Louisville, USA"
- },
-{
-"Battery_Level":2.57,
- "Device_Id":1156053077,
- "First_Sensor_temperature":20.4 ,
- "Route_From":"Banglore, India",
- "Route_To":"Louisville, USA"
-}]
-while True:
-    try:
-        print("connected with", addr)
-        userdata = (json.dumps(data)+"\n").encode('utf-8')
-        print(userdata)
-        c.send(userdata)
-        time.sleep(100)
-    except Exception as e:
-        print(e)
-c.close()
+        except IOError as e:
+            if e.errno == errno.EPIPE:
+                 pass
+
+conn.close()    #close the connection
+

@@ -11,7 +11,12 @@
     <div class="container">
         <!-- Left Side: Signup Form -->
         <div class="form-section">
-            <div id="errorResponse" style="display: none;">{{error}}</div>
+            <div id="errorResponse" class="error-message" style="display: {% if error %}block{% else %}none{% endif %}; color: red; margin-bottom: 10px; font-weight: bold; padding: 5px;">
+                {{ error or '' }}
+            </div>
+            <div id="successResponse" class="success-message" style="display: {% if success %}block{% else %}none{% endif %}; color: green; margin-bottom: 10px; font-weight: bold; padding: 5px;">
+                {{ success or '' }}
+            </div>
             <div class="popupsuccess" id="successPopup"></div>
             <div class="popuperror" id="errorPopup"></div>
             <form method="post" action="/signup" onsubmit="return validateSignup(event)">

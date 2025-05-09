@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Device Data Stream</title>
-    <link rel="stylesheet" href="/statics/devicedata.css">
+    <link rel="stylesheet" href="../statics/devicedata.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -43,8 +43,15 @@
                     <p>Device ID</p>
                     <select id="device-id" name="device_id" class="device-id" onchange="this.form.submit()">
                         <option value="">Select</option>
-                        <option value="1156053076" {% if selected_device_id == "1156053076" %}selected{% endif %}>1156053076</option>
-                        <option value="1156053077" {% if selected_device_id == "1156053077" %}selected{% endif %}>1156053077</option>
+                        <option value="1150" {% if selected_device_id == "1150" %}selected{% endif %}>1150</option>
+                        <option value="1151" {% if selected_device_id == "1151" %}selected{% endif %}>1151</option>
+                        <option value="1152" {% if selected_device_id == "1152" %}selected{% endif %}>1152</option>
+                        <option value="1153" {% if selected_device_id == "1153" %}selected{% endif %}>1153</option>
+                        <option value="1154" {% if selected_device_id == "1154" %}selected{% endif %}>1154</option>
+                        <option value="1155" {% if selected_device_id == "1155" %}selected{% endif %}>1155</option>
+                        <option value="1156" {% if selected_device_id == "1156" %}selected{% endif %}>1156</option>
+                        <option value="1157" {% if selected_device_id == "1157" %}selected{% endif %}>1157</option>
+                        <option value="1158" {% if selected_device_id == "1158" %}selected{% endif %}>1158</option>  
                     </select>                    
                 </div>
                 <br>
@@ -63,7 +70,7 @@
                             {% if devices %}
                                 {% for device in devices %}
                                     <tr>
-                                        <td>{{ device.Device_Id }}</td>
+                                        <td>{{ device.Device_ID }}</td>
                                         <td>{{ device.Battery_Level }}</td>
                                         <td>{{ device.First_Sensor_temperature }}</td>
                                         <td>{{ device.Route_From }}</td>
@@ -71,7 +78,7 @@
                                     </tr>
                                 {% endfor %}
                             {% else %}
-                                <tr><td colspan="5">No device data found.</td></tr>
+                                <tr><td colspan="5"></td></tr>
                             {% endif %}
                         </tbody>
                     </table>

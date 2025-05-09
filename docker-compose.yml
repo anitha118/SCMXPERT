@@ -53,7 +53,7 @@
       environment:
         - bootstrap_servers=kafka:9092
         - topic=device_data
-        - MONGODB_URL=mongodb+srv://anitha:Ch%40ni18eddy@cluster0.b86pq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+        - MONGODB_URL=MongoClient(os.getenv("MONGO_URI"))
         - group_id=scm-consumer
         - data_base_name=SCMXpertLite
         - collection=device_data

@@ -9,6 +9,7 @@ from routes.unauthorized import unauth_router
 from api.auth import get_current_user
 from pymongo import MongoClient
 import uvicorn
+import os 
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -16,13 +17,13 @@ app = FastAPI()
 app.mount("/statics", StaticFiles(directory="statics"), name="statics")
 
 # MongoDB connection
-client = MongoClient("mongodb+srv://anitha:Ch%40ni18eddy@cluster0.b86pq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+client = MongoClient(os.getenv("MONGO_URI")) 
 db = client["data"]
 col = db["scm"]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Replace with your frontend origin
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -34,7 +35,4 @@ app.include_router(dashboard_router)
 app.include_router(shipment_router)
 app.include_router(device_router)
 app.include_router(unauth_router)
-
-
-
 

@@ -27,12 +27,17 @@ document.addEventListener("DOMContentLoaded", async function () {
         navLabels.forEach(label => label.style.display = "none");
     }
 
-    const dateInput = document.getElementById("delivery-date");
-    if (dateInput) {
-        const today = new Date().toISOString().split("T")[0];
-        dateInput.setAttribute("min", today);
+    const today = new Date().toISOString().split("T")[0];
+
+    const deliveryDateInput = document.getElementById("delivery-date");
+    if (deliveryDateInput) {
+        deliveryDateInput.setAttribute("min", today);
     }
 
+    const expectedDateInput = document.getElementById("expected-date");
+    if (expectedDateInput) {
+        expectedDateInput.setAttribute("min", today);
+    }
 });
 
 document.getElementById("shipment-form").addEventListener("submit", async function (event) {
@@ -45,6 +50,9 @@ document.getElementById("shipment-form").addEventListener("submit", async functi
     const containerNumber = document.getElementById("container-number").value.trim();
     const deliveryNumber = document.getElementById("delivery-number").value.trim();
     const batchId = document.getElementById("batch-id").value.trim();
+    const expectedDate = document.getElementById("expected-date").value;
+
+    const today = new Date().toISOString().split("T")[0];
 
     const containerPattern = /^[A-Z]{4}\d{7}$/;
     const deliveryPattern = /^[A-Za-z0-9]{6,12}$/;
@@ -82,6 +90,11 @@ document.getElementById("shipment-form").addEventListener("submit", async functi
 
     if (!batchIdPattern.test(batchId)) {
         alert("Batch ID must be 3–5 uppercase letters + 4–6 digits.");
+        return;
+    }
+
+    if (expectedDate && new Date(expectedDate) < new Date(today)) {
+        alert("Expected Delivery Date cannot be in the past.");
         return;
     }
 

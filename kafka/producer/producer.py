@@ -64,7 +64,7 @@ try:
 
             producer.flush() #Ensures all messages are actually sent to Kafka not just sitting in memory.
             
-        except json.JSONDecodeError as e: assert
+        except json.JSONDecodeError as e: 
             print(f"JSON decode error: {e}")
         except Exception as e: #Kafka send failures
             print(f"Error sending data to Kafka: {e}")

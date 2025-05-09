@@ -266,3 +266,70 @@ button:active {
     padding: 5px 5px;
     transform: scale(0.95);
 }
+/* Medium Devices (Tablets) */
+@media (max-width: 991px) {
+    .main-content {
+        margin-left: 80px;
+        padding: 15px;
+    }
+
+    .box-left, .box-right {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .font {
+        font-size: 24px;
+    }
+
+    .button-container {
+        flex-direction: column;
+        height: auto;
+        padding: 40px 0;
+    }
+
+    button {
+        width: 80%;
+        margin: 10px 0;
+    }
+}
+
+/* Small Devices (Mobiles) */
+@media (max-width: 767px) {
+    .sidebar {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        z-index: 1000;
+        padding-bottom: 20px;
+    }
+
+    .sidebar.collapsed {
+        width: 100%;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .header {
+        font-size: 20px;
+        padding: 10px;
+    }
+
+    .box-left, .box-right {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .font {
+        font-size: 20px;
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+        font-size: 16px;
+    }
+}

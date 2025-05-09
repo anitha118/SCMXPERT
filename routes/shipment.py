@@ -45,7 +45,7 @@ async def create_shipment(
         if shipments_collection.find_one({"shipment_number": shipment_number}):
             return JSONResponse(
                 content={"detail": "Shipment Number already exists."},
-                status_code=409  # You can still use 409 internally
+                status_code=409  
                 )
 
         shipment_data = {
@@ -75,6 +75,7 @@ async def create_shipment(
     except Exception as e:
         print(f" Error: {e}")  # Logs error in the terminal
         return JSONResponse(content={"error": "Internal Server Error", "detail": str(e)}, status_code=500)
+    
 #  GET My Shipments
 @shipment_router.get("/myshipment", response_class=HTMLResponse)
 async def my_shipments(request: Request, user: dict = Depends(get_current_user)):

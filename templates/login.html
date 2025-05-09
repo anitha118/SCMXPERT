@@ -16,18 +16,20 @@
             <p>Don't have an account? Click below to sign up.</p>
             <a href="/signup"><button>Sign Up</button></a>
         </div>
-
+        <div id="errorResponse" style="display: none;">{{error}}</div>
         <!-- Right Side: Login Form -->
         <div class="form-section">
-            <form method="post" action="/login">
+            <div class="popupsuccess" id="successPopup"></div>
+            <div class="popuperror" id="errorPopup"></div>
+            <form method="post" action="/login" onsubmit="validateLogin(event)">
                 <h2>Login</h2>
                 <div class="input-container">
                     <i class="fas fa-user"></i>
-                    <input type="text" name="email" placeholder="Email" required>
+                    <input type="text" name="email" id="login-email" placeholder="Email" required>
                 </div>
                 <div class="input-container">
                     <i class="fas fa-lock"></i>
-                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="password" name="password" id="login-password" placeholder="Password" required>
                 </div>
                 <div class="captcha">
                     <label for="captcha-input">Enter Captcha</label>
@@ -43,6 +45,6 @@
             </form>
         </div>
     </div>
+    <script src="../statics/script/login.js"></script>
 </body>
-<script src="/statics/script/login.js"></script>
 </html>

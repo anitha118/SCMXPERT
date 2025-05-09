@@ -26,7 +26,7 @@ if not consumer_config['bootstrap.servers'] or not topic or not mongo_uri or not
     raise ValueError("Missing required environment variables.")
 
 # Create Kafka consumer instance
-consumer = Consumer(consumer_config) Kafka
+consumer = Consumer(consumer_config)
 
 # Connect to MongoDB
 mongo_client = MongoClient(mongo_uri)
