@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const sidebar = document.querySelector(".sidebar");
     const mainContent = document.querySelector(".main-content");
     const navLabels = document.querySelectorAll(".nav-label");
-    const navLinks = document.querySelectorAll(".nav-link");
+
 
     // Function to toggle sidebar
     function toggleSidebar() {

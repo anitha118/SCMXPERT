@@ -63,15 +63,3 @@ def get_current_user(request: Request) -> dict:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=payload["error"])
 
     return {"email": payload.get("sub"), "role": payload.get("role")}
-
-# Role Only (optional helper) 
-# def get_current_user_role(request: Request) -> dict:
-#     """Extracts and returns the role from the JWT token in the request cookie"""
-#     token = request.cookies.get("access_token")
-#     if not token:
-#         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Missing token")
-#     payload = decode_jwt_token(token)
-#     if "error" in payload:
-#         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=payload["error"])
-
-#     return payload.get("role", "user")  # default to "user" if role missing
