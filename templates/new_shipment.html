@@ -62,11 +62,12 @@
         <!-- Shipment Form -->
         <form id="shipment-form" method="post" action="/new_shipment" enctype="multipart/form-data" class="form-container">
             <div class="form-group">
-                <label> Shipment Number <span class="red-asterisk">*</span></label>
+                <label for="shipment-number">Shipment Number <span class="red-asterisk">*</span></label>
                 <input type="text" id="shipment-number" name="shipment_number" required />
             </div>
+
             <div class="form-group">
-                <label>Route Details <span class="red-asterisk">*</span></label>
+                <label for="route-details">Route Details <span class="red-asterisk">*</span></label>
                 <select id="route-details" name="route_details" required>
                     <option value="">Select Route</option>
                     <option value="Hyderabad to Tirupati">Hyderabad to Tirupati</option>
@@ -77,8 +78,9 @@
                     <option value="Pune to Nagpur">Pune to Nagpur</option>
                 </select>
             </div>
+
             <div class="form-group">
-                <label>Device <span class="red-asterisk">*</span></label>
+                <label for="device">Device <span class="red-asterisk">*</span></label>
                 <select id="device" name="device" required>
                     <option value="">Select Device</option>
                     <option value="1150">1150</option>
@@ -92,24 +94,29 @@
                     <option value="1158">1158</option>
                 </select>
             </div>
+
             <div class="form-group">
-                <label>PO Number <span class="red-asterisk">*</span></label>
+                <label for="po-number">PO Number <span class="red-asterisk">*</span></label>
                 <input type="text" id="po-number" name="po_number" required />
             </div>
+
             <div class="form-group">
-                <label>NDC Number <span class="red-asterisk">*</span></label>
+                <label for="ndc-number">NDC Number <span class="red-asterisk">*</span></label>
                 <input type="text" id="ndc-number" name="ndc_number" required />
             </div>
+
             <div class="form-group">
-                <label>Serial Number <span class="red-asterisk">*</span></label>
+                <label for="serial-number">Serial Number <span class="red-asterisk">*</span></label>
                 <input type="text" id="serial-number" name="serial_number" required />
             </div>
+
             <div class="form-group">
-                <label>Container Number <span class="red-asterisk">*</span></label>
+                <label for="container-number">Container Number <span class="red-asterisk">*</span></label>
                 <input type="text" id="container-number" name="container_number" required />
             </div>
+
             <div class="form-group">
-                <label>Goods Type <span class="red-asterisk">*</span></label>
+                <label for="goods-type">Goods Type <span class="red-asterisk">*</span></label>
                 <select id="goods-type" name="goods_type" required>
                     <option value="">Select Type</option>
                     <option value="Mobile">Mobile</option>
@@ -118,27 +125,33 @@
                     <option value="Computers">Computers</option>
                 </select>
             </div>
+
             <div class="form-group">
-                <label>Expected Delivery Date <span class="red-asterisk">*</span></label>
+                <label for="expected-date">Expected Delivery Date <span class="red-asterisk">*</span></label>
                 <input type="date" id="expected-date" name="expected_date" required />
             </div>
+
             <div class="form-group">
-                <label>Delivery Number <span class="red-asterisk">*</span></label>
+                <label for="delivery-number">Delivery Number <span class="red-asterisk">*</span></label>
                 <input type="text" id="delivery-number" name="delivery_number" required />
             </div>
+
             <div class="form-group">
-                <label>Batch ID <span class="red-asterisk">*</span></label>
+                <label for="batch-id">Batch ID <span class="red-asterisk">*</span></label>
                 <input type="text" id="batch-id" name="batch_id" required />
             </div>
+
             <div class="form-group">
-                <label>Shipment Description <span class="red-asterisk">*</span></label>
+                <label for="shipment-description">Shipment Description <span class="red-asterisk">*</span></label>
                 <textarea id="shipment-description" name="description" required></textarea>
             </div>
+
             <div class="button-group">
                 <button type="submit">Create Shipment</button>
             </div>
         </form>
     </div>
+
     <script src="../statics/script/new_shipment.js"></script>
 </body>
 </html>

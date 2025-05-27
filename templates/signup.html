@@ -11,32 +11,39 @@
     <div class="container">
         <!-- Left Side: Signup Form -->
         <div class="form-section">
-            <div id="errorResponse" class="error-message" style="display: {% if error %}block{% else %}none{% endif %}; color: red; margin-bottom: 10px; font-weight: bold; padding: 5px;">
+            <div id="errorResponse" class="error-message" style="{{ 'display: block; color: red; margin-bottom: 10px; font-weight: bold; padding: 5px;' if error else 'display: none;' }}">
                 {{ error or '' }}
             </div>
-            <div id="successResponse" class="success-message" style="display: {% if success %}block{% else %}none{% endif %}; color: green; margin-bottom: 10px; font-weight: bold; padding: 5px;">
+            <div id="successResponse" class="success-message" style="{{ 'display: block; color: green; margin-bottom: 10px; font-weight: bold; padding: 5px;' if success else 'display: none;' }}">
                 {{ success or '' }}
             </div>
+
             <div class="popupsuccess" id="successPopup"></div>
             <div class="popuperror" id="errorPopup"></div>
+
             <form method="post" action="/signup" onsubmit="return validateSignup(event)">
                 <h2>Sign Up</h2>
+
                 <div class="input-container">
                     <i class="fas fa-user"></i>
                     <input type="text" name="username" id="username" placeholder="Username" required>
                 </div>
+
                 <div class="input-container">
                     <i class="fas fa-envelope"></i>
                     <input type="email" name="email" id="email" placeholder="Email" required>
                 </div>
+
                 <div class="input-container">
                     <i class="fas fa-lock"></i>
                     <input type="password" name="password" id="password" placeholder="Password" required autocomplete="new-password">
                 </div>
+
                 <div class="input-container">
                     <i class="fas fa-lock"></i>
                     <input type="password" name="confirm_password" id="confirm-password" placeholder="Confirm Password" required autocomplete="new-password">
                 </div>
+
                 <button type="submit">Sign Up</button>
             </form>
         </div>
@@ -48,6 +55,7 @@
             <a href="/login"><button>Login</button></a>
         </div>
     </div>
+
     <script src="../statics/script/signup.js"></script>
 </body>
 </html>
